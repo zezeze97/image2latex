@@ -1,0 +1,1 @@
+tools/ocr_test_imgs.sh expr_result/im2latex_transformer/im2latex_transformer.py expr_result/im2latex_transformer/pretrained_acc47.pth /home/zhangzr/im2latex_data/formula_images_processed /home/zhangzr/im2latex_data/master_data/test.txt /home/zhangzr/im2latex_data/master_pred/

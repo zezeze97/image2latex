@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0,1 PORT=29500 ./tools/dist_train.sh ./configs/textrecog/master/master_Resnet31_withGCB.py expr_result/im2caption_chinese_res31withgcb/ 2

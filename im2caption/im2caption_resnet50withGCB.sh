@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0,1 PORT=29501 ./tools/dist_train.sh ./configs/textrecog/master/master_Resnet50_withGCB_TFencoder.py expr_result/im2caption_chinese_res50withgcb/ 2
