@@ -2,7 +2,7 @@ from nltk.translate.bleu_score import sentence_bleu
 import numpy as np
 import json
 
-prediction_file = 'expr_result/im2caption_chinese_res50withgcb/predict/_2021-12-31_09-37-52/results.txt'
+prediction_file = 'expr_result/im2caption_chinese_transformer/predict/_2021-12-30_22-08-58/results.txt'
 gt_file = '../im2caption_data/chinese_caption/ai_challenger_caption_validation_20170910/caption_validation_annotations_20170910.json'
 with open(gt_file,'r')as f:
     gt_data = json.load(f)

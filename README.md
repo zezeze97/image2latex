@@ -237,7 +237,7 @@ unzip chinese_caption.zip
    ```shell
    python im2caption/compute_score.py
    ```
-2. 预测结果可视化
+2. 预测结果可视化, 注意修改prediction_file
 
    [im2caption/prediction_visualization.ipynb](im2caption/prediction_visualization.ipynb)
    
