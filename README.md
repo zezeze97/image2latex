@@ -273,8 +273,3 @@ unzip chinese_caption.zip
 
 
 
-
-
-
-
-# Im2Caption
