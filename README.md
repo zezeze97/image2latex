@@ -260,7 +260,7 @@ unzip chinese_caption.zip
 <!-- Pretrain Model -->
 
 ## Pretrained Model
-[]
+coming soon...
 
 
 
