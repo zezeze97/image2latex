@@ -128,9 +128,6 @@ tests/results
 
 #temp files
 .DS_Store
-
-checkpoints
-expr_result/
 htmlcov
 *.swp
 log.txt
