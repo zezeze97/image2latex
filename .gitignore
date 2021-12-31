@@ -130,7 +130,7 @@ tests/results
 .DS_Store
 
 checkpoints
-
+expr_result/
 htmlcov
 *.swp
 log.txt
