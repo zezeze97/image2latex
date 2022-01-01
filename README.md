@@ -251,7 +251,7 @@ unzip chinese_caption.zip
 |                         Models                                   |    BLEU@4    |
 | :-----------------------------------------------------:            | :--------: |
 |       ResNet31withGCB + 3\*Transformer Decoder                    |   0.5597   |
-| ResNet50withGCB + 6\*Transformer Encoder + 6\*Transformer Decoder |     **0.5821**     |
+| ResNet50withGCB + 6\*Transformer Encoder + 6\*Transformer Decoder |     **0.5871**     |
 | 图片patch简单线性投影 + 6\*Transformer Encoder + 6\*Transformer Decoder |   0.2973   |
 
 
