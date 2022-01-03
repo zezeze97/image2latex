@@ -62,16 +62,17 @@ model = dict(
 
 
 img_norm_cfg = dict(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
-'''
+
+    
+    
+train_pipeline = [
+    dict(type='LoadImageFromFile'),
     dict(type='CaptionAug',
         args=[
         # ['Fliplr', 0.5],
         dict(cls='Affine', rotate=[-10, 10]),
-        dict(cls='Crop',percent=(0, 0.2))
+        # dict(cls='Crop',percent=(0, 0.2))
         ]),
-    '''
-train_pipeline = [
-    dict(type='LoadImageFromFile'),
     dict(
         type='ResizeOCR',
         height=64,
@@ -184,7 +185,7 @@ log_config = dict(
 # yapf:enable
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = 'expr_result/im2latex_res31/epoch_25.pth'
+load_from = None
 resume_from = None
 workflow = [('train', 1)]
 

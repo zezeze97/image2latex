@@ -147,6 +147,13 @@
 
    预测结果在[expr_result/im2latex_res31/predict](expr_result/im2latex_res31/predict)中
 
+  批量预测
+  ```shell
+   python im2latex/im2latex_infer.py
+  ```
+
+  可视化预测[im2latex/visualization.ipynb](im2latex/visualization.ipynb)
+
 <!-- Result -->
 
 ## 结果
