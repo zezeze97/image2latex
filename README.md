@@ -102,7 +102,7 @@
    pip install mmcv_full-1.4.0-cp38-cp38-manylinux1_x86_64.whl
    ```
    
-4. 确保在项目文件夹下(Master-im2caption)，安装 mmdetection。点击 [here](https://github.com/open-mmlab/mmdetection/blob/v2.11.0/docs/get_started.md) 查看更多细节。
+4. 确保在项目文件夹下(im2latex)，安装 mmdetection。点击 [here](https://github.com/open-mmlab/mmdetection/blob/v2.11.0/docs/get_started.md) 查看更多细节。
    
    ```sh
    # We embed mmdetection-2.11.0 source code into this project.
@@ -115,7 +115,7 @@
 
    ```sh
    # install mmocr
-   cd {Path to Master-im2caption}
+   cd {Path to im2latex}
    pip install -v -e .
    ```
 
