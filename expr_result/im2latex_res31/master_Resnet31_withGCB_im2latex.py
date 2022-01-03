@@ -2,7 +2,7 @@ checkpoint_config = dict(interval=5)
 log_config = dict(interval=100, hooks=[dict(type='TextLoggerHook')])
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = 'expr_result/im2latex_res31/pretrained.pth'
+load_from = 'expr_result/im2latex_res31/epoch_25.pth'
 resume_from = None
 workflow = [('train', 1)]
 alphabet_file = '/home/zhangzr/im2latex_data/master_data/keys.txt'
@@ -51,12 +51,6 @@ model = dict(
 img_norm_cfg = dict(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 train_pipeline = [
     dict(type='LoadImageFromFile'),
-    dict(
-        type='CaptionAug',
-        args=[
-            dict(cls='Affine', rotate=[-10, 10]),
-            dict(cls='Crop', percent=(0, 0.2))
-        ]),
     dict(
         type='ResizeOCR',
         height=64,
@@ -107,12 +101,6 @@ train1 = dict(
             separator='	')),
     pipeline=[
         dict(type='LoadImageFromFile'),
-        dict(
-            type='CaptionAug',
-            args=[
-                dict(cls='Affine', rotate=[-10, 10]),
-                dict(cls='Crop', percent=(0, 0.2))
-            ]),
         dict(
             type='ResizeOCR',
             height=64,
@@ -189,12 +177,6 @@ data = dict(
                         separator='	')),
                 pipeline=[
                     dict(type='LoadImageFromFile'),
-                    dict(
-                        type='CaptionAug',
-                        args=[
-                            dict(cls='Affine', rotate=[-10, 10]),
-                            dict(cls='Crop', percent=(0, 0.2))
-                        ]),
                     dict(
                         type='ResizeOCR',
                         height=64,
