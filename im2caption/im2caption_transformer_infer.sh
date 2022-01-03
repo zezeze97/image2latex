@@ -1,1 +1,0 @@
-tools/ocr_test_imgs.sh ./configs/textrecog/master/im2caption_transformer.py expr_result/im2caption_chinese_transformer/pretrained.pth ../im2caption_data/chinese_caption/ai_challenger_caption_validation_20170910/caption_validation_images_20170910 ../im2caption_data/chinese_caption/val_list.txt expr_result/im2caption_chinese_transformer/predict/

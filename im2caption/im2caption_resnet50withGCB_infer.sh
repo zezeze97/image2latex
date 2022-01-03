@@ -1,1 +1,0 @@
-tools/ocr_test_imgs.sh ./configs/textrecog/master/master_Resnet50_withGCB_TFencoder.py expr_result/im2caption_chinese_res50withgcb/pretrained.pth ../im2caption_data/chinese_caption/ai_challenger_caption_validation_20170910/caption_validation_images_20170910 ../im2caption_data/chinese_caption/val_list.txt expr_result/im2caption_chinese_res50withgcb/predict/
