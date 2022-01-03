@@ -1,4 +1,4 @@
-checkpoint_config = dict(interval=1)
+checkpoint_config = dict(interval=5)
 log_config = dict(interval=100, hooks=[dict(type='TextLoggerHook')])
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
@@ -305,7 +305,7 @@ lr_config = dict(
     warmup_ratio=0.3333333333333333,
     step=[75, 100])
 total_epochs = 100
-evaluation = dict(interval=1, metric='acc')
+evaluation = dict(interval=5, metric='acc')
 fp16 = dict(loss_scale='dynamic')
 work_dir = './expr_result/im2latex_res31/'
 gpu_ids = range(0, 2)

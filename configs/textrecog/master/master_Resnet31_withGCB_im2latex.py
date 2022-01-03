@@ -163,13 +163,13 @@ lr_config = dict(
 total_epochs = 100
 
 # evaluation
-evaluation = dict(interval=1, metric='acc')
+evaluation = dict(interval=5, metric='acc')
 
 # fp16
 fp16 = dict(loss_scale='dynamic')
 
 # checkpoint setting
-checkpoint_config = dict(interval=1)
+checkpoint_config = dict(interval=5)
 
 # log_config
 log_config = dict(
