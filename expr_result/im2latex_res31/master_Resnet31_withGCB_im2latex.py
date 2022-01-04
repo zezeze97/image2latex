@@ -1,8 +1,8 @@
-checkpoint_config = dict(interval=1)
+checkpoint_config = dict(interval=5)
 log_config = dict(interval=100, hooks=[dict(type='TextLoggerHook')])
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = 'expr_result/im2latex_res31/epoch_10.pth'
+load_from = 'expr_result/im2latex_res31/pretrained.pth'
 resume_from = None
 workflow = [('train', 1)]
 alphabet_file = '/home/zhangzr/im2latex_data/master_data/keys.txt'
@@ -285,9 +285,9 @@ lr_config = dict(
     warmup='linear',
     warmup_iters=100,
     warmup_ratio=0.3333333333333333,
-    step=[18, 20])
-total_epochs = 20
-evaluation = dict(interval=1, metric='acc')
+    step=[30, 40])
+total_epochs = 40
+evaluation = dict(interval=5, metric='acc')
 fp16 = dict(loss_scale='dynamic')
 work_dir = './expr_result/im2latex_res31/'
 gpu_ids = range(0, 2)
