@@ -75,9 +75,9 @@ train_pipeline = [
         ]),
     dict(
         type='ResizeOCR',
-        height=64,
-        min_width=64,
-        max_width=256,
+        height=128,
+        min_width=128,
+        max_width=512,
         keep_aspect_ratio=True),
     dict(type='ToTensorOCR'),
     dict(type='NormalizeOCR', **img_norm_cfg),
@@ -92,9 +92,9 @@ test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='ResizeOCR',
-        height=64,
-        min_width=64,
-        max_width=256,
+        height=128,
+        min_width=128,
+        max_width=512,
         keep_aspect_ratio=True),
     dict(type='ToTensorOCR'),
     dict(type='NormalizeOCR', **img_norm_cfg),
@@ -145,7 +145,7 @@ testset = [dict(
     test_mode=True) for dataset_name, test_ann_file in test_ann_files.items()]
 
 data = dict(
-    samples_per_gpu=64,
+    samples_per_gpu=16,
     workers_per_gpu=2,
     train=dict(type='ConcatDataset', datasets=[train1]),
     val=dict(type='ConcatDataset', datasets=testset),
@@ -162,17 +162,17 @@ lr_config = dict(
     warmup='linear',
     warmup_iters=100,
     warmup_ratio=1.0 / 3,
-    step=[75, 100])
-total_epochs = 100
+    step=[8, 10])
+total_epochs = 10
 
 # evaluation
-evaluation = dict(interval=5, metric='acc')
+evaluation = dict(interval=1, metric='acc')
 
 # fp16
 fp16 = dict(loss_scale='dynamic')
 
 # checkpoint setting
-checkpoint_config = dict(interval=5)
+checkpoint_config = dict(interval=1)
 
 # log_config
 log_config = dict(

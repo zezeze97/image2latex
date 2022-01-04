@@ -1,4 +1,4 @@
-checkpoint_config = dict(interval=5)
+checkpoint_config = dict(interval=1)
 log_config = dict(interval=100, hooks=[dict(type='TextLoggerHook')])
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
@@ -54,9 +54,9 @@ train_pipeline = [
     dict(type='CaptionAug', args=[dict(cls='Affine', rotate=[-10, 10])]),
     dict(
         type='ResizeOCR',
-        height=64,
-        min_width=64,
-        max_width=256,
+        height=128,
+        min_width=128,
+        max_width=512,
         keep_aspect_ratio=True),
     dict(type='ToTensorOCR'),
     dict(type='NormalizeOCR', mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
@@ -71,9 +71,9 @@ test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='ResizeOCR',
-        height=64,
-        min_width=64,
-        max_width=256,
+        height=128,
+        min_width=128,
+        max_width=512,
         keep_aspect_ratio=True),
     dict(type='ToTensorOCR'),
     dict(type='NormalizeOCR', mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
@@ -105,9 +105,9 @@ train1 = dict(
         dict(type='CaptionAug', args=[dict(cls='Affine', rotate=[-10, 10])]),
         dict(
             type='ResizeOCR',
-            height=64,
-            min_width=64,
-            max_width=256,
+            height=128,
+            min_width=128,
+            max_width=512,
             keep_aspect_ratio=True),
         dict(type='ToTensorOCR'),
         dict(type='NormalizeOCR', mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
@@ -139,9 +139,9 @@ testset = [
             dict(type='LoadImageFromFile'),
             dict(
                 type='ResizeOCR',
-                height=64,
-                min_width=64,
-                max_width=256,
+                height=128,
+                min_width=128,
+                max_width=512,
                 keep_aspect_ratio=True),
             dict(type='ToTensorOCR'),
             dict(
@@ -159,7 +159,7 @@ testset = [
         test_mode=True)
 ]
 data = dict(
-    samples_per_gpu=64,
+    samples_per_gpu=16,
     workers_per_gpu=2,
     train=dict(
         type='ConcatDataset',
@@ -184,9 +184,9 @@ data = dict(
                         args=[dict(cls='Affine', rotate=[-10, 10])]),
                     dict(
                         type='ResizeOCR',
-                        height=64,
-                        min_width=64,
-                        max_width=256,
+                        height=128,
+                        min_width=128,
+                        max_width=512,
                         keep_aspect_ratio=True),
                     dict(type='ToTensorOCR'),
                     dict(
@@ -223,9 +223,9 @@ data = dict(
                     dict(type='LoadImageFromFile'),
                     dict(
                         type='ResizeOCR',
-                        height=64,
-                        min_width=64,
-                        max_width=256,
+                        height=128,
+                        min_width=128,
+                        max_width=512,
                         keep_aspect_ratio=True),
                     dict(type='ToTensorOCR'),
                     dict(
@@ -263,9 +263,9 @@ data = dict(
                     dict(type='LoadImageFromFile'),
                     dict(
                         type='ResizeOCR',
-                        height=64,
-                        min_width=64,
-                        max_width=256,
+                        height=128,
+                        min_width=128,
+                        max_width=512,
                         keep_aspect_ratio=True),
                     dict(type='ToTensorOCR'),
                     dict(
@@ -290,9 +290,9 @@ lr_config = dict(
     warmup='linear',
     warmup_iters=100,
     warmup_ratio=0.3333333333333333,
-    step=[75, 100])
-total_epochs = 100
-evaluation = dict(interval=5, metric='acc')
+    step=[8, 10])
+total_epochs = 10
+evaluation = dict(interval=1, metric='acc')
 fp16 = dict(loss_scale='dynamic')
 work_dir = './expr_result/im2latex_res31/'
 gpu_ids = range(0, 2)
