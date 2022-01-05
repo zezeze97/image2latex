@@ -154,6 +154,11 @@
 
   可视化预测[im2latex/online_infer_visualization.ipynb](im2latex/online_infer_visualization.ipynb)
 
+## 计算BLEU得分
+   ```shell
+   python im2latex/eval_score.py
+   ```
+
 <!-- Result -->
 
 ## 结果

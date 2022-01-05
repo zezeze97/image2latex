@@ -30,13 +30,24 @@ bleu_gram4_list = []
 
 for item in pred_dict.keys():
     pred = pred_dict[item]
-    file_name = item.split('/')[-1]
-    gts = gt_dict[file_name]
+    file_name = item
+    gts = [gt_dict[file_name]]
     bleu_gram1_list.append(sentence_bleu(gts,pred,weights=(1, 0, 0, 0)))
     bleu_gram2_list.append(sentence_bleu(gts,pred,weights=(0.5, 0.5, 0, 0)))
     bleu_gram3_list.append(sentence_bleu(gts,pred,weights=(0.33, 0.33, 0.33, 0)))
     bleu_gram4_list.append(sentence_bleu(gts,pred,weights=(0.25, 0.25, 0.25, 0.25)))
-    # bleu_gram4_list.append(sentence_bleu(gts,pred))
+    
+em_num = 0
+all_num = 0
+for item in pred_dict.keys():
+    pred = pred_dict[item]
+    file_name = item
+    gts = gt_dict[file_name]
+    if pred == gts:
+        em_num += 1
+    all_num += 1
+print('Acc: ',em_num/all_num)
+
     
 print('bleu@1 score: ',np.mean(bleu_gram1_list))
 print('bleu@2 score: ',np.mean(bleu_gram2_list))
