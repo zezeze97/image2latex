@@ -152,7 +152,7 @@
    python im2latex/im2latex_infer.py
   ```
 
-  可视化预测[im2latex/visualization.ipynb](im2latex/visualization.ipynb)
+  可视化预测[im2latex/online_infer_visualization.ipynb](im2latex/online_infer_visualization.ipynb)
 
 <!-- Result -->
 
