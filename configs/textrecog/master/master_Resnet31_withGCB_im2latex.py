@@ -153,7 +153,7 @@ data = dict(
     test=dict(type='ConcatDataset', datasets=testset))
 
 # optimizer
-optimizer = dict(type='Ranger', lr=1e-4)
+optimizer = dict(type='Ranger', lr=1e-5)
 optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 # optimizer_config = dict(grad_clip=None)
 
@@ -163,17 +163,17 @@ lr_config = dict(
     warmup='linear',
     warmup_iters=100,
     warmup_ratio=1.0 / 3,
-    step=[30, 40])
-total_epochs = 40
+    step=[7, 10])
+total_epochs = 10
 
 # evaluation
-evaluation = dict(interval=5, metric='acc')
+evaluation = dict(interval=1, metric='acc')
 
 # fp16
 fp16 = dict(loss_scale='dynamic')
 
 # checkpoint setting
-checkpoint_config = dict(interval=5)
+checkpoint_config = dict(interval=1)
 
 # log_config
 log_config = dict(
@@ -186,7 +186,7 @@ log_config = dict(
 # yapf:enable
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = 'expr_result/im2latex_res31/pretrained.pth'
+load_from = 'expr_result/im2latex_res31/pretrained_acc467.pth'
 resume_from = None
 workflow = [('train', 1)]
 

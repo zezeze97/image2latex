@@ -1,8 +1,8 @@
-checkpoint_config = dict(interval=5)
+checkpoint_config = dict(interval=1)
 log_config = dict(interval=100, hooks=[dict(type='TextLoggerHook')])
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = 'expr_result/im2latex_res31/pretrained.pth'
+load_from = 'expr_result/im2latex_res31/pretrained_acc467.pth'
 resume_from = None
 workflow = [('train', 1)]
 alphabet_file = '/home/zhangzr/im2latex_data/master_data/keys.txt'
@@ -278,16 +278,16 @@ data = dict(
                 dataset_info='table_Rec_val_debug_0',
                 test_mode=True)
         ]))
-optimizer = dict(type='Ranger', lr=0.0001)
+optimizer = dict(type='Ranger', lr=1e-05)
 optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 lr_config = dict(
     policy='step',
     warmup='linear',
     warmup_iters=100,
     warmup_ratio=0.3333333333333333,
-    step=[30, 40])
-total_epochs = 40
-evaluation = dict(interval=5, metric='acc')
+    step=[7, 10])
+total_epochs = 10
+evaluation = dict(interval=1, metric='acc')
 fp16 = dict(loss_scale='dynamic')
 work_dir = './expr_result/im2latex_res31/'
 gpu_ids = range(0, 2)
