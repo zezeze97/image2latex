@@ -100,11 +100,11 @@ def save_result(img_list, result, output_dir):
 if __name__ =='__main__':
     config_file = 'configs/textrecog/master/master_Resnet31_withGCB_im2latex.py'
     checkpoint_file = 'expr_result/im2latex_res31/pretrained.pth'
-    img_path = '/home/zhangzr/zw_data/temp_png/'
+    img_path = '/home/zhangzr/im2latex_data/test_img/'
     output_dir = 'expr_result/im2latex_res31/predict/'
 
 
-    im2latex_model = Recognition_Inference(config_file, checkpoint_file, samples_per_gpu=64)
-    img_list, batch = read_img(img_path)
-    result = im2latex_model.predict_batch(batch)
+    im2latex_model = Recognition_Inference(config_file, checkpoint_file, samples_per_gpu=32)
+    img_list, all_batch = read_img(img_path)
+    result = im2latex_model.predict_batch(all_batch)
     save_result(img_list, result, output_dir)
