@@ -174,7 +174,7 @@
 <!-- Pretrain Model -->
 
 ## Pretrained Model
-[下载链接]()
+[下载链接](https://disk.pku.edu.cn:443/link/1C7068999B834C854F7AE7CEA0EA54D9)
 
 
 
