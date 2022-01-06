@@ -163,13 +163,18 @@
 
 ## 结果
 
+**这里是模型在验证集(1000张图片)上的BLEU@4得分**
+
+|                         Models                                   |    BLEU@4    |    EM    |
+| :-----------------------------------------------------:            | :--------: |:--------: |
+|       ResNet31withGCB + 3\*Transformer Decoder                    |   0.9139   |  0.4749   |
 
 
 
 <!-- Pretrain Model -->
 
 ## Pretrained Model
-coming soon...
+[下载链接]()
 
 
 
