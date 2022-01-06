@@ -2,17 +2,17 @@ checkpoint_config = dict(interval=1)
 log_config = dict(interval=100, hooks=[dict(type='TextLoggerHook')])
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = 'expr_result/im2latex_res31/pretrained_acc467.pth'
+load_from = 'expr_result/im2latex_res31/epoch_4.pth'
 resume_from = None
 workflow = [('train', 1)]
 alphabet_file = '/home/zhangzr/im2latex_data/master_data/keys.txt'
 alphabet_len = 533
-max_seq_len = 150
+max_seq_len = 200
 start_end_same = False
 label_convertor = dict(
     type='MasterConvertor',
     dict_file='/home/zhangzr/im2latex_data/master_data/keys.txt',
-    max_seq_len=150,
+    max_seq_len=200,
     start_end_same=False,
     with_unknown=True)
 PAD = 536
@@ -44,10 +44,10 @@ model = dict(
     label_convertor=dict(
         type='MasterConvertor',
         dict_file='/home/zhangzr/im2latex_data/master_data/keys.txt',
-        max_seq_len=150,
+        max_seq_len=200,
         start_end_same=False,
         with_unknown=True),
-    max_seq_len=150)
+    max_seq_len=200)
 img_norm_cfg = dict(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 train_pipeline = [
     dict(type='LoadImageFromFile'),

@@ -4,7 +4,7 @@ _base_ = [
 
 alphabet_file = '/home/zhangzr/im2latex_data/master_data/keys.txt'
 alphabet_len = len(open(alphabet_file, 'r', encoding='utf-8').readlines())
-max_seq_len = 150
+max_seq_len = 200
 
 start_end_same = False
 label_convertor = dict(
@@ -186,7 +186,7 @@ log_config = dict(
 # yapf:enable
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = 'expr_result/im2latex_res31/pretrained_acc467.pth'
+load_from = 'expr_result/im2latex_res31/epoch_4.pth'
 resume_from = None
 workflow = [('train', 1)]
 
