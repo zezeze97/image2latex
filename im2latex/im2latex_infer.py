@@ -77,15 +77,15 @@ class Recognition_Inference(Inference):
 
 
 def read_img(img_path):
-    img_list = os.listdir(img_path)
-    batch = []
-    for img in img_list:
-        batch.append(imread(img_path + img))
-    return img_list, batch
+    img_name_list = os.listdir(img_path)
+    img_array_list = []
+    for img in img_name_list:
+        img_array_list.append(imread(img_path + img))
+    return img_name_list, img_array_list
 
-def save_result(img_list, result, output_dir):
+def save_result(img_name_list, result, output_dir):
     pred_results = []
-    for i,img_name in enumerate(img_list):
+    for i,img_name in enumerate(img_name_list):
         pred_result = {}
         pred_result['image name'] = img_name
         pred_latex = ''
@@ -105,6 +105,6 @@ if __name__ =='__main__':
 
 
     im2latex_model = Recognition_Inference(config_file, checkpoint_file, samples_per_gpu=32)
-    img_list, all_batch = read_img(img_path)
-    result = im2latex_model.predict_batch(all_batch)
-    save_result(img_list, result, output_dir)
+    img_name_list, img_array_list = read_img(img_path)
+    result = im2latex_model.predict_batch(img_array_list)
+    save_result(img_name_list, result, output_dir)
