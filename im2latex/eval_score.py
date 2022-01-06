@@ -46,7 +46,9 @@ for item in pred_dict.keys():
     if pred == gts:
         em_num += 1
     all_num += 1
+print('Eval For ',all_num,' Images')
 print('Acc: ',em_num/all_num)
+
 
     
 print('bleu@1 score: ',np.mean(bleu_gram1_list))
