@@ -147,12 +147,13 @@
 
    预测结果在[expr_result/im2latex_res31/predict](expr_result/im2latex_res31/predict)中
 
-  批量预测
-  ```shell
-   python im2latex/im2latex_infer.py
-  ```
+2.  批量预测(batch inference)
+    ```shell
+    python im2latex/im2latex_infer.py
+    ```
+    预测结果在[expr_result/im2latex_res31/predict/pred.json](expr_result/im2latex_res31/predict/pred.json)中
 
-  可视化预测[im2latex/online_infer_visualization.ipynb](im2latex/online_infer_visualization.ipynb)
+3.  实时可视化预测[im2latex/online_infer_visualization.ipynb](im2latex/online_infer_visualization.ipynb)
 
 ## 计算BLEU得分
    ```shell
