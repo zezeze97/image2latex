@@ -2,7 +2,7 @@ _base_ = [
     '../../_base_/default_runtime.py',
 ]
 
-alphabet_file = '../data/im2latex_data/master_data/keys.txt'
+alphabet_file = '/home/zhangzr/Master_image2latex/data/im2latex_data/master_data/keys.txt'
 alphabet_len = len(open(alphabet_file, 'r', encoding='utf-8').readlines())
 max_seq_len = 200
 
@@ -62,18 +62,15 @@ model = dict(
 
 
 img_norm_cfg = dict(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
-'''
-dict(type='CaptionAug',
+    
+train_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(type='CaptionAug',
         args=[
         # ['Fliplr', 0.5],
         dict(cls='Affine', rotate=[-10, 10]),
         # dict(cls='Crop',percent=(0, 0.2))
         ]),
-    
-'''
-    
-train_pipeline = [
-    dict(type='LoadImageFromFile'),
     dict(
         type='ResizeOCR',
         height=128,
@@ -109,8 +106,8 @@ test_pipeline = [
 ]
 
 dataset_type = 'OCRDataset'
-img_prefix1 = '../data/im2latex_data/formula_images_processed/'
-train_anno_file1 = '../data/im2latex_data/master_data/train.txt'
+img_prefix1 = '/home/zhangzr/Master_image2latex/data/im2latex_data/formula_images_processed/'
+train_anno_file1 = '/home/zhangzr/Master_image2latex/data/im2latex_data/master_data/train.txt'
 train1 = dict(
     type=dataset_type,
     img_prefix=img_prefix1,
@@ -126,9 +123,9 @@ train1 = dict(
     pipeline=train_pipeline,
     test_mode=False)
 
-test_img_prefix = '../data/im2latex_data/formula_images_processed/'
+test_img_prefix = '/home/zhangzr/Master_image2latex/data/im2latex_data/formula_images_processed/'
 # test_ann_files = {'table_Rec_val_small_0': '/data_8/data/TableRecognition/regValData/table_recognization_train_txt/small_0_refine.txt'}
-test_ann_files = {'table_Rec_val_debug_0': '../data/im2latex_data/master_data/test.txt'}
+test_ann_files = {'table_Rec_val_debug_0': '/home/zhangzr/Master_image2latex/data/im2latex_data/master_data/test.txt'}
 testset = [dict(
     type=dataset_type,
     img_prefix=test_img_prefix,
@@ -146,14 +143,14 @@ testset = [dict(
     test_mode=True) for dataset_name, test_ann_file in test_ann_files.items()]
 
 data = dict(
-    samples_per_gpu=16,
-    workers_per_gpu=2,
+    samples_per_gpu=32,
+    workers_per_gpu=8,
     train=dict(type='ConcatDataset', datasets=[train1]),
     val=dict(type='ConcatDataset', datasets=testset),
     test=dict(type='ConcatDataset', datasets=testset))
 
 # optimizer
-optimizer = dict(type='Ranger', lr=1e-5)
+optimizer = dict(type='Ranger', lr=1e-4)
 optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 # optimizer_config = dict(grad_clip=None)
 
@@ -163,17 +160,17 @@ lr_config = dict(
     warmup='linear',
     warmup_iters=100,
     warmup_ratio=1.0 / 3,
-    step=[7, 10])
-total_epochs = 10
+    step=[80, 100])
+total_epochs = 100
 
 # evaluation
-evaluation = dict(interval=1, metric='acc')
+evaluation = dict(interval=10, metric='acc')
 
 # fp16
 fp16 = dict(loss_scale='dynamic')
 
 # checkpoint setting
-checkpoint_config = dict(interval=1)
+checkpoint_config = dict(interval=10)
 
 # log_config
 log_config = dict(
@@ -186,7 +183,7 @@ log_config = dict(
 # yapf:enable
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = None
+load_from = 'expr_result/im2latex_res31_aug/epoch_5.pth'
 resume_from = None
 workflow = [('train', 1)]
 
