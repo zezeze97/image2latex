@@ -2,7 +2,7 @@ _base_ = [
     '../../_base_/default_runtime.py',
 ]
 
-alphabet_file = 'data/im2latex_data/master_data/keys.txt'
+alphabet_file = '../data/im2latex_data/master_data/keys.txt'
 alphabet_len = len(open(alphabet_file, 'r', encoding='utf-8').readlines())
 max_seq_len = 200
 
@@ -109,8 +109,8 @@ test_pipeline = [
 ]
 
 dataset_type = 'OCRDataset'
-img_prefix1 = 'data/im2latex_data/formula_images_processed/'
-train_anno_file1 = 'data/im2latex_data/master_data/train.txt'
+img_prefix1 = '../data/im2latex_data/formula_images_processed/'
+train_anno_file1 = '../data/im2latex_data/master_data/train.txt'
 train1 = dict(
     type=dataset_type,
     img_prefix=img_prefix1,
@@ -126,9 +126,9 @@ train1 = dict(
     pipeline=train_pipeline,
     test_mode=False)
 
-test_img_prefix = 'data/im2latex_data/formula_images_processed/'
+test_img_prefix = '../data/im2latex_data/formula_images_processed/'
 # test_ann_files = {'table_Rec_val_small_0': '/data_8/data/TableRecognition/regValData/table_recognization_train_txt/small_0_refine.txt'}
-test_ann_files = {'table_Rec_val_debug_0': 'data/im2latex_data/master_data/test.txt'}
+test_ann_files = {'table_Rec_val_debug_0': '../data/im2latex_data/master_data/test.txt'}
 testset = [dict(
     type=dataset_type,
     img_prefix=test_img_prefix,
