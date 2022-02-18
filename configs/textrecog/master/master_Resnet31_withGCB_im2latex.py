@@ -2,7 +2,7 @@ _base_ = [
     '../../_base_/default_runtime.py',
 ]
 
-alphabet_file = '/home/zhangzr/Master-im2latex/data/im2latex_data/master_data/keys.txt'
+alphabet_file = '/home/zhangzr/Master_image2latex/data/im2latex_data/master_data/keys.txt'
 alphabet_len = len(open(alphabet_file, 'r', encoding='utf-8').readlines())
 max_seq_len = 200
 
