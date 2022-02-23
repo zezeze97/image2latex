@@ -2,9 +2,9 @@ _base_ = [
     '../../_base_/default_runtime.py',
 ]
 
-alphabet_file = '/home/zhangzr/Master_image2latex/data/im2latex_data/master_data/keys.txt'
+alphabet_file = '/home/zhangzr/Master_image2latex/data/im2latex_data/master_data/new_keys.txt'
 alphabet_len = len(open(alphabet_file, 'r', encoding='utf-8').readlines())
-max_seq_len = 200
+max_seq_len = 150
 
 start_end_same = False
 label_convertor = dict(
@@ -62,7 +62,7 @@ model = dict(
 
 
 img_norm_cfg = dict(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
-    
+'''
 train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(type='CaptionAug',
@@ -73,7 +73,7 @@ train_pipeline = [
         ]),
     dict(
         type='ResizeOCR',
-        height=128,
+        height=64,
         min_width=128,
         max_width=512,
         keep_aspect_ratio=True),
@@ -86,11 +86,33 @@ train_pipeline = [
             'filename', 'ori_shape', 'img_shape', 'text', 'valid_ratio'
         ]),
 ]
+
+'''    
+train_pipeline = [
+    dict(type='LoadImageFromFile'),
+    dict(
+        type='ResizeOCR',
+        height=64,
+        min_width=128,
+        max_width=512,
+        keep_aspect_ratio=True),
+    dict(type='ToTensorOCR'),
+    dict(type='NormalizeOCR', **img_norm_cfg),
+    dict(
+        type='Collect',
+        keys=['img'],
+        meta_keys=[
+            'filename', 'ori_shape', 'img_shape', 'text', 'valid_ratio'
+        ]),
+]
+
+
+
 test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='ResizeOCR',
-        height=128,
+        height=64,
         min_width=128,
         max_width=512,
         keep_aspect_ratio=True),
@@ -125,7 +147,7 @@ train1 = dict(
 
 test_img_prefix = '/home/zhangzr/Master_image2latex/data/im2latex_data/formula_images_processed/'
 # test_ann_files = {'table_Rec_val_small_0': '/data_8/data/TableRecognition/regValData/table_recognization_train_txt/small_0_refine.txt'}
-test_ann_files = {'table_Rec_val_debug_0': '/home/zhangzr/Master_image2latex/data/im2latex_data/master_data/test.txt'}
+test_ann_files = {'table_Rec_val_debug_0': '/home/zhangzr/Master_image2latex/data/im2latex_data/master_data/val.txt'}
 testset = [dict(
     type=dataset_type,
     img_prefix=test_img_prefix,
@@ -143,14 +165,14 @@ testset = [dict(
     test_mode=True) for dataset_name, test_ann_file in test_ann_files.items()]
 
 data = dict(
-    samples_per_gpu=32,
+    samples_per_gpu=128,
     workers_per_gpu=8,
     train=dict(type='ConcatDataset', datasets=[train1]),
     val=dict(type='ConcatDataset', datasets=testset),
     test=dict(type='ConcatDataset', datasets=testset))
 
 # optimizer
-optimizer = dict(type='Ranger', lr=1e-4)
+optimizer = dict(type='Ranger', lr=1e-3)
 optimizer_config = dict(grad_clip=dict(max_norm=35, norm_type=2))
 # optimizer_config = dict(grad_clip=None)
 
@@ -183,7 +205,7 @@ log_config = dict(
 # yapf:enable
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = 'expr_result/im2latex_res31_aug/epoch_5.pth'
+load_from = None
 resume_from = None
 workflow = [('train', 1)]
 

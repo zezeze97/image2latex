@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=0 PORT=29500 ./tools/dist_train.sh ./configs/textrecog/master/master_Resnet31_withGCB_im2latex.py ./expr_result/im2latex_res31_aug/ 1
+CUDA_VISIBLE_DEVICES=0 PORT=29500 ./tools/dist_train.sh ./configs/textrecog/master/master_Resnet31_withGCB_im2latex.py ./expr_result/im2latex_res31_new/ 1
