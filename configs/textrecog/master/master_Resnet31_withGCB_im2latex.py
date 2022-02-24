@@ -2,9 +2,9 @@ _base_ = [
     '../../_base_/default_runtime.py',
 ]
 
-alphabet_file = '/home/zhangzr/Master_image2latex/data/im2latex_data/master_data/new_keys.txt'
+alphabet_file = '/home/zhangzr/Master_image2latex/data/im2latex_data/master_data/keys.txt'
 alphabet_len = len(open(alphabet_file, 'r', encoding='utf-8').readlines())
-max_seq_len = 150
+max_seq_len = 200
 
 start_end_same = False
 label_convertor = dict(
@@ -92,7 +92,7 @@ train_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='ResizeOCR',
-        height=64,
+        height=128,
         min_width=128,
         max_width=512,
         keep_aspect_ratio=True),
@@ -112,7 +112,7 @@ test_pipeline = [
     dict(type='LoadImageFromFile'),
     dict(
         type='ResizeOCR',
-        height=64,
+        height=128,
         min_width=128,
         max_width=512,
         keep_aspect_ratio=True),
@@ -205,7 +205,7 @@ log_config = dict(
 # yapf:enable
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = None
+load_from = '/home/zhangzr/Master_image2latex/expr_result/im2latex_res31_new/epoch_10.pth'
 resume_from = None
 workflow = [('train', 1)]
 

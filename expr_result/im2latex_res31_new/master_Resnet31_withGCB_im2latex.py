@@ -2,7 +2,7 @@ checkpoint_config = dict(interval=10)
 log_config = dict(interval=100, hooks=[dict(type='TextLoggerHook')])
 dist_params = dict(backend='nccl')
 log_level = 'INFO'
-load_from = None
+load_from = '/home/zhangzr/Master_image2latex/expr_result/im2latex_res31_new/epoch_10.pth'
 resume_from = None
 workflow = [('train', 1)]
 alphabet_file = '/home/zhangzr/Master_image2latex/data/im2latex_data/master_data/new_keys.txt'
